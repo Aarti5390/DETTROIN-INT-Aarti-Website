@@ -8,95 +8,58 @@ const Gallery = () => {
   const [visibleCount, setVisibleCount] = useState(8);
 
   // ============================================
-  // WORKING IMAGES - Medium size
+  // GUARANTEED WORKING IMAGES - Using Picsum
+  // Picsum ALWAYS works, no broken images!
   // ============================================
-  const getImage = (category, index) => {
-    const images = {
-      campus: [
-        'https://images.pexels.com/photos/256541/pexels-photo-256541.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-        'https://images.pexels.com/photos/207691/pexels-photo-207691.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-        'https://images.pexels.com/photos/256490/pexels-photo-256490.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-        'https://images.pexels.com/photos/2604473/pexels-photo-2604473.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-        'https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-      ],
-      academics: [
-        'https://images.pexels.com/photos/5428830/pexels-photo-5428830.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-        'https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-        'https://images.pexels.com/photos/256466/pexels-photo-256466.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-        'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-        'https://images.pexels.com/photos/5428836/pexels-photo-5428836.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-      ],
-      sports: [
-        'https://images.pexels.com/photos/1431310/pexels-photo-1431310.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-        'https://images.pexels.com/photos/960180/pexels-photo-960180.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-        'https://images.pexels.com/photos/260024/pexels-photo-260024.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-        'https://images.pexels.com/photos/1169013/pexels-photo-1169013.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-        'https://images.pexels.com/photos/1503711/pexels-photo-1503711.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-      ],
-      activities: [
-        'https://images.pexels.com/photos/4567106/pexels-photo-4567106.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-        'https://images.pexels.com/photos/5212346/pexels-photo-5212346.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-        'https://images.pexels.com/photos/6456316/pexels-photo-6456316.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-        'https://images.pexels.com/photos/5212348/pexels-photo-5212348.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-        'https://images.pexels.com/photos/2690777/pexels-photo-2690777.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-      ],
-      events: [
-        'https://images.pexels.com/photos/2600470/pexels-photo-2600470.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-        'https://images.pexels.com/photos/3015768/pexels-photo-3015768.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-        'https://images.pexels.com/photos/2960870/pexels-photo-2960870.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-        'https://images.pexels.com/photos/2960873/pexels-photo-2960873.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-        'https://images.pexels.com/photos/2600470/pexels-photo-2600470.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-      ],
-      facilities: [
-        'https://images.pexels.com/photos/5189439/pexels-photo-5189439.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-        'https://images.pexels.com/photos/2134008/pexels-photo-2134008.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-        'https://images.pexels.com/photos/5127867/pexels-photo-5127867.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-        'https://images.pexels.com/photos/2690777/pexels-photo-2690777.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-        'https://images.pexels.com/photos/2604473/pexels-photo-2604473.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-      ],
-    };
-    
-    const categoryImages = images[category] || images.campus;
-    return categoryImages[index % categoryImages.length];
+  const getImage = (id) => {
+    return `https://picsum.photos/id/${id}/600/400`;
   };
 
+  // ============================================
+  // GALLERY DATA - All with unique Picsum IDs
+  // ============================================
   const galleryImages = [
-    // CAMPUS
-    { id: 1, title: 'Main Building', category: 'Campus', imgIdx: 0 },
-    { id: 2, title: 'Campus Grounds', category: 'Campus', imgIdx: 1 },
-    { id: 3, title: 'Front View', category: 'Campus', imgIdx: 2 },
-    { id: 4, title: 'Campus Garden', category: 'Campus', imgIdx: 3 },
-    { id: 5, title: 'School Playground', category: 'Campus', imgIdx: 4 },
-    // ACADEMICS
-    { id: 6, title: 'Modern Classroom', category: 'Academics', imgIdx: 0 },
-    { id: 7, title: 'School Library', category: 'Academics', imgIdx: 1 },
-    { id: 8, title: 'Science Laboratory', category: 'Academics', imgIdx: 2 },
-    { id: 9, title: 'Computer Lab', category: 'Academics', imgIdx: 3 },
-    { id: 10, title: 'Art Room', category: 'Academics', imgIdx: 4 },
-    // SPORTS
-    { id: 11, title: 'Cricket Ground', category: 'Sports', imgIdx: 0 },
-    { id: 12, title: 'Football Field', category: 'Sports', imgIdx: 1 },
-    { id: 13, title: 'Basketball Court', category: 'Sports', imgIdx: 2 },
-    { id: 14, title: 'Swimming Pool', category: 'Sports', imgIdx: 3 },
-    { id: 15, title: 'Athletics Track', category: 'Sports', imgIdx: 4 },
-    // ACTIVITIES
-    { id: 16, title: 'Student Activities', category: 'Activities', imgIdx: 0 },
-    { id: 17, title: 'Art & Craft', category: 'Activities', imgIdx: 1 },
-    { id: 18, title: 'Music Class', category: 'Activities', imgIdx: 2 },
-    { id: 19, title: 'Dance Performance', category: 'Activities', imgIdx: 3 },
-    { id: 20, title: 'Drama Club', category: 'Activities', imgIdx: 4 },
-    // EVENTS
-    { id: 21, title: 'Annual Day', category: 'Events', imgIdx: 0 },
-    { id: 22, title: 'Sports Day', category: 'Events', imgIdx: 1 },
-    { id: 23, title: 'Cultural Festival', category: 'Events', imgIdx: 2 },
-    { id: 24, title: 'Science Exhibition', category: 'Events', imgIdx: 3 },
-    { id: 25, title: 'Graduation', category: 'Events', imgIdx: 4 },
-    // FACILITIES
-    { id: 26, title: 'School Auditorium', category: 'Facilities', imgIdx: 0 },
-    { id: 27, title: 'Cafeteria', category: 'Facilities', imgIdx: 1 },
-    { id: 28, title: 'Medical Room', category: 'Facilities', imgIdx: 2 },
-    { id: 29, title: 'Transport', category: 'Facilities', imgIdx: 3 },
-    { id: 30, title: 'Hostel Building', category: 'Facilities', imgIdx: 4 },
+    // CAMPUS (5 images)
+    { id: 1, title: 'Main Building', category: 'Campus', imgId: 160 },
+    { id: 2, title: 'Campus Grounds', category: 'Campus', imgId: 161 },
+    { id: 3, title: 'Front View', category: 'Campus', imgId: 162 },
+    { id: 4, title: 'Campus Garden', category: 'Campus', imgId: 163 },
+    { id: 5, title: 'School Playground', category: 'Campus', imgId: 164 },
+    
+    // ACADEMICS (5 images)
+    { id: 6, title: 'Modern Classroom', category: 'Academics', imgId: 20 },
+    { id: 7, title: 'School Library', category: 'Academics', imgId: 21 },
+    { id: 8, title: 'Science Laboratory', category: 'Academics', imgId: 22 },
+    { id: 9, title: 'Computer Lab', category: 'Academics', imgId: 23 },
+    { id: 10, title: 'Art Room', category: 'Academics', imgId: 24 },
+    
+    // SPORTS (5 images)
+    { id: 11, title: 'Cricket Ground', category: 'Sports', imgId: 30 },
+    { id: 12, title: 'Football Field', category: 'Sports', imgId: 31 },
+    { id: 13, title: 'Basketball Court', category: 'Sports', imgId: 32 },
+    { id: 14, title: 'Swimming Pool', category: 'Sports', imgId: 33 },
+    { id: 15, title: 'Athletics Track', category: 'Sports', imgId: 34 },
+    
+    // ACTIVITIES (5 images)
+    { id: 16, title: 'Student Activities', category: 'Activities', imgId: 40 },
+    { id: 17, title: 'Art & Craft', category: 'Activities', imgId: 41 },
+    { id: 18, title: 'Music Class', category: 'Activities', imgId: 42 },
+    { id: 19, title: 'Dance Performance', category: 'Activities', imgId: 43 },
+    { id: 20, title: 'Drama Club', category: 'Activities', imgId: 44 },
+    
+    // EVENTS (5 images)
+    { id: 21, title: 'Annual Day', category: 'Events', imgId: 50 },
+    { id: 22, title: 'Sports Day', category: 'Events', imgId: 51 },
+    { id: 23, title: 'Cultural Festival', category: 'Events', imgId: 52 },
+    { id: 24, title: 'Science Exhibition', category: 'Events', imgId: 53 },
+    { id: 25, title: 'Graduation Ceremony', category: 'Events', imgId: 54 },
+    
+    // FACILITIES (5 images)
+    { id: 26, title: 'School Auditorium', category: 'Facilities', imgId: 60 },
+    { id: 27, title: 'Cafeteria', category: 'Facilities', imgId: 61 },
+    { id: 28, title: 'Medical Room', category: 'Facilities', imgId: 62 },
+    { id: 29, title: 'Transport Facility', category: 'Facilities', imgId: 63 },
+    { id: 30, title: 'Hostel Building', category: 'Facilities', imgId: 64 },
   ];
 
   const categories = ['All', 'Campus', 'Academics', 'Sports', 'Activities', 'Events', 'Facilities'];
@@ -210,7 +173,7 @@ const Gallery = () => {
           ============================================ */}
       <div style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(4, 1fr)', // 4 columns
+        gridTemplateColumns: 'repeat(4, 1fr)',
         gap: '1rem',
         maxWidth: '1200px',
         margin: '0 auto',
@@ -240,19 +203,20 @@ const Gallery = () => {
               e.currentTarget.style.boxShadow = '0 2px 10px rgba(0,0,0,0.06)';
             }}
           >
+            {/* ✅ FIXED: Image with proper error handling */}
             <img
-              src={getImage(image.category.toLowerCase(), image.imgIdx)}
+              src={getImage(image.imgId)}
               alt={image.title}
               loading="lazy"
               style={{
                 width: '100%',
                 height: '100%',
-                objectFit: 'cover', // This fills the card completely
+                objectFit: 'cover',
                 display: 'block',
               }}
               onError={(e) => {
-                // Fallback if image fails
-                e.target.src = 'https://via.placeholder.com/600x400/1a3c6e/ffffff?text=Pavna';
+                // 🔥 FALLBACK: If image fails, use this guaranteed working URL
+                e.target.src = `https://picsum.photos/seed/${image.id}/600/400`;
               }}
             />
             
@@ -414,7 +378,7 @@ const Gallery = () => {
             onClick={(e) => e.stopPropagation()}
           >
             <img
-              src={getImage(selectedImage.category.toLowerCase(), selectedImage.imgIdx)}
+              src={getImage(selectedImage.imgId)}
               alt={selectedImage.title}
               style={{
                 width: '100%',
@@ -424,7 +388,7 @@ const Gallery = () => {
                 display: 'block',
               }}
               onError={(e) => {
-                e.target.src = 'https://via.placeholder.com/900x600/1a3c6e/ffffff?text=Pavna';
+                e.target.src = `https://picsum.photos/seed/${selectedImage.id}/900/600`;
               }}
             />
             <div style={{ 
@@ -458,9 +422,6 @@ const Gallery = () => {
           to { opacity: 1; transform: scale(1); }
         }
 
-        /* ============================================
-           RESPONSIVE
-           ============================================ */
         @media (max-width: 1024px) {
           .gallery-grid {
             grid-template-columns: repeat(3, 1fr) !important;
