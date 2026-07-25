@@ -1,5 +1,7 @@
+// src/components/Guests.jsx
 import React from 'react';
 import { FaUser, FaStar } from 'react-icons/fa';
+import { images } from '../assets/images';
 
 const Guests = () => {
   const guestsData = [

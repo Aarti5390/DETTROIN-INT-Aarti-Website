@@ -1,5 +1,7 @@
+// src/components/Management.jsx
 import React from 'react';
 import { FaUserTie, FaUserGraduate, FaUserMd } from 'react-icons/fa';
+import { images } from '../assets/images';
 
 const Management = () => {
   const managementData = [

@@ -1,3 +1,4 @@
+// src/components/Footer.jsx
 import React from 'react';
 import { 
   FaFacebook, 
@@ -8,6 +9,7 @@ import {
   FaPhone, 
   FaEnvelope 
 } from 'react-icons/fa';
+import { images } from '../assets/images';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -17,6 +19,11 @@ const Footer = () => {
       <div className="footer-grid">
         <div>
           <h3>Pavna School</h3>
+          <img 
+            src={images.logo} 
+            alt="Pavna School Logo" 
+            style={{ height: '40px', marginBottom: '1rem' }}
+          />
           <p>
             Founded in 1998, Pavna School (formerly DPS Aligarh) is dedicated 
             to providing innovative, world-class education and shaping young 

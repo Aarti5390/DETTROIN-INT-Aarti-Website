@@ -1,5 +1,7 @@
+// src/components/About.jsx
 import React from 'react';
 import { FaGraduationCap, FaUsers, FaAward, FaGlobe } from 'react-icons/fa';
+import { images } from '../assets/images';
 
 const About = () => {
   const features = [
@@ -14,9 +16,24 @@ const About = () => {
       <div className="about-container">
         <div className="about-image">
           <img 
-            src="https://via.placeholder.com/600x400/1a3c6e/c9a84c?text=Pavna+School+Campus" 
+            src={images.about}
             alt="Pavna School Campus"
+            style={{ width: '100%', borderRadius: '20px', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}
           />
+          <div style={{
+            position: 'absolute',
+            bottom: '-20px',
+            right: '-20px',
+            background: '#c9a84c',
+            color: 'white',
+            padding: '1.5rem 2rem',
+            borderRadius: '15px',
+            fontWeight: '700',
+            fontSize: '1.2rem',
+            boxShadow: '0 10px 30px rgba(0,0,0,0.15)'
+          }}>
+            28+ Years Legacy
+          </div>
         </div>
         <div className="about-content">
           <span className="subtitle">✦ About Us</span>

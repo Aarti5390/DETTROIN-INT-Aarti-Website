@@ -1,3 +1,4 @@
+// src/components/Stats.jsx
 import React, { useState, useEffect, useRef } from 'react';
 
 const Stats = () => {
@@ -39,14 +40,13 @@ const Stats = () => {
   }, [hasAnimated]);
 
   const animateCounters = () => {
-    const duration = 2000; // ms
+    const duration = 2000;
     const startTime = Date.now();
 
     const updateCounter = () => {
       const elapsed = Date.now() - startTime;
       const progress = Math.min(elapsed / duration, 1);
-
-      const easedProgress = 1 - Math.pow(1 - progress, 3); // Ease-out cubic
+      const easedProgress = 1 - Math.pow(1 - progress, 3);
 
       setCounters({
         educators: Math.floor(easedProgress * 250),
