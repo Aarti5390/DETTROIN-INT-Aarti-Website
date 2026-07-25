@@ -14,7 +14,7 @@
 | **GitHub Username** | Aarti5390 |
 | **Repository Name** | DETTROIN-INT-Aarti-Website |
 | **Selected Website** | [Pavna School Aligarh](https://pavnaschoolaligarh.com/) |
-| **Live Demo** | [🔗 View Live Demo](https://dettroint-int-aarti-website.vercel.app) |
+| **Live Demo** | [🔗 View Live Demo](https://dettroin-int-aarti-website.vercel.app/) |
 
 
 ### 🛠️ Technologies Used
