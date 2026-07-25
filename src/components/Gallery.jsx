@@ -8,19 +8,17 @@ const Gallery = () => {
   const [visibleCount, setVisibleCount] = useState(8);
 
   // ============================================
-  // REAL WORKING IMAGES - Using Picsum Photos
-  // These URLs ALWAYS work!
+  // WORKING IMAGES - Picsum Photos
   // ============================================
   const getRealImage = (id) => {
-    // Picsum provides real, random images that always load
     return `https://picsum.photos/id/${id}/600/400`;
   };
 
   const galleryImages = [
     // CAMPUS (5 images)
-    { id: 1, title: 'School Campus - Main Building', category: 'Campus', imgId: 160 },
-    { id: 2, title: 'Green Campus Grounds', category: 'Campus', imgId: 161 },
-    { id: 3, title: 'School Building Front View', category: 'Campus', imgId: 162 },
+    { id: 1, title: 'Main Building', category: 'Campus', imgId: 160 },
+    { id: 2, title: 'Campus Grounds', category: 'Campus', imgId: 161 },
+    { id: 3, title: 'Front View', category: 'Campus', imgId: 162 },
     { id: 4, title: 'Campus Garden', category: 'Campus', imgId: 163 },
     { id: 5, title: 'School Playground', category: 'Campus', imgId: 164 },
     
@@ -40,14 +38,14 @@ const Gallery = () => {
     
     // ACTIVITIES (5 images)
     { id: 16, title: 'Student Activities', category: 'Activities', imgId: 40 },
-    { id: 17, title: 'Art & Craft Session', category: 'Activities', imgId: 41 },
+    { id: 17, title: 'Art & Craft', category: 'Activities', imgId: 41 },
     { id: 18, title: 'Music Class', category: 'Activities', imgId: 42 },
     { id: 19, title: 'Dance Performance', category: 'Activities', imgId: 43 },
     { id: 20, title: 'Drama Club', category: 'Activities', imgId: 44 },
     
     // EVENTS (5 images)
-    { id: 21, title: 'School Annual Day', category: 'Events', imgId: 50 },
-    { id: 22, title: 'Sports Day Event', category: 'Events', imgId: 51 },
+    { id: 21, title: 'Annual Day', category: 'Events', imgId: 50 },
+    { id: 22, title: 'Sports Day', category: 'Events', imgId: 51 },
     { id: 23, title: 'Cultural Festival', category: 'Events', imgId: 52 },
     { id: 24, title: 'Science Exhibition', category: 'Events', imgId: 53 },
     { id: 25, title: 'Graduation Ceremony', category: 'Events', imgId: 54 },
@@ -62,7 +60,6 @@ const Gallery = () => {
 
   const categories = ['All', 'Campus', 'Academics', 'Sports', 'Activities', 'Events', 'Facilities'];
 
-  // Filter images based on category
   const getFilteredImages = () => {
     if (activeCategory === 'All') {
       return galleryImages;
@@ -95,61 +92,51 @@ const Gallery = () => {
 
   return (
     <section id="gallery" style={{ 
-      padding: '5rem 5%', 
+      padding: '3rem 4% 4rem',
       background: '#f8f9fa',
-      minHeight: '100vh',
-      fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+      minHeight: 'auto',
+      width: '100%',
+      overflow: 'hidden',
     }}>
       {/* Header */}
       <div style={{ 
         textAlign: 'center', 
         maxWidth: '700px', 
-        margin: '0 auto 3rem' 
+        margin: '0 auto 1.5rem',
+        padding: '0 1rem',
       }}>
         <span style={{ 
           color: '#c9a84c', 
           fontWeight: 600, 
-          letterSpacing: '3px', 
+          letterSpacing: '2px', 
           textTransform: 'uppercase', 
-          fontSize: '0.85rem',
-          fontFamily: "'Inter', sans-serif",
+          fontSize: '0.8rem',
         }}>
           ✦ Campus Life
         </span>
         <h2 style={{ 
-          fontSize: '2.8rem', 
+          fontSize: '2rem',
           color: '#1a3c6e', 
-          marginBottom: '1rem',
-          fontFamily: "'Inter', sans-serif",
-          fontWeight: 800,
+          marginBottom: '0.3rem',
         }}>
           Our School Gallery
         </h2>
         <p style={{ 
           color: '#7a8294',
-          fontFamily: "'Inter', sans-serif",
-          fontSize: '1.05rem',
-          lineHeight: '1.6',
-        }}>
-          Explore the vibrant life at Pavna School through our photo gallery
-        </p>
-        <p style={{ 
-          color: '#a0a7b5', 
-          fontSize: '0.9rem', 
-          marginTop: '0.5rem',
-          fontFamily: "'Inter', sans-serif",
+          fontSize: '0.9rem',
         }}>
           Showing {visibleImages.length} of {filteredImages.length} images
         </p>
       </div>
 
-      {/* Category Filters */}
+      {/* Category Filters - Mobile Optimized */}
       <div style={{
         display: 'flex',
         justifyContent: 'center',
-        gap: '0.8rem',
+        gap: '0.4rem',
         flexWrap: 'wrap',
-        marginBottom: '2.5rem',
+        marginBottom: '1.2rem',
+        padding: '0 0.5rem',
       }}>
         {categories.map(category => {
           const count = category === 'All' 
@@ -161,7 +148,7 @@ const Gallery = () => {
               key={category}
               onClick={() => handleCategoryChange(category)}
               style={{
-                padding: '0.6rem 1.8rem',
+                padding: '0.35rem 0.8rem',
                 borderRadius: '50px',
                 border: activeCategory === category ? '2px solid #c9a84c' : '1px solid #e0e4ea',
                 background: activeCategory === category ? '#c9a84c' : 'transparent',
@@ -169,8 +156,9 @@ const Gallery = () => {
                 cursor: 'pointer',
                 transition: 'all 0.3s ease',
                 fontWeight: '500',
-                fontSize: '0.9rem',
+                fontSize: '0.7rem',
                 fontFamily: "'Inter', sans-serif",
+                whiteSpace: 'nowrap',
               }}
             >
               {category} ({count})
@@ -179,38 +167,37 @@ const Gallery = () => {
         })}
       </div>
 
-      {/* Gallery Grid - 4 columns */}
+      {/* Gallery Grid - Mobile First */}
       <div style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(4, 1fr)',
-        gap: '1.5rem',
+        gridTemplateColumns: 'repeat(2, 1fr)', // Default: 2 columns for mobile
+        gap: '0.8rem',
         maxWidth: '1200px',
         margin: '0 auto',
+        padding: '0 0.5rem',
       }}>
-        {visibleImages.map((image, index) => (
+        {visibleImages.map((image) => (
           <div
             key={image.id}
             style={{
               position: 'relative',
-              borderRadius: '15px',
+              borderRadius: '10px',
               cursor: 'pointer',
-              boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
-              transition: 'all 0.4s ease',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
+              transition: 'all 0.3s ease',
               aspectRatio: '4/3',
               overflow: 'hidden',
               background: '#e9ecef',
-              animation: 'fadeInUp 0.5s ease forwards',
-              animationDelay: `${(index % 8) * 0.05}s`,
-              opacity: 0,
+              width: '100%',
             }}
             onClick={() => openLightbox(image)}
             onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'scale(1.05)';
-              e.currentTarget.style.boxShadow = '0 12px 40px rgba(0,0,0,0.15)';
+              e.currentTarget.style.transform = 'scale(1.02)';
+              e.currentTarget.style.boxShadow = '0 6px 20px rgba(0,0,0,0.1)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = 'scale(1)';
-              e.currentTarget.style.boxShadow = '0 4px 20px rgba(0,0,0,0.08)';
+              e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.06)';
             }}
           >
             <img
@@ -222,51 +209,64 @@ const Gallery = () => {
                 height: '100%',
                 objectFit: 'cover',
                 display: 'block',
-                transition: 'transform 0.5s ease',
               }}
               onError={(e) => {
-                // If image fails, use a fallback
                 e.target.src = `https://picsum.photos/seed/${image.id}/600/400`;
               }}
             />
+            
+            {/* Category Badge - Mobile Optimized */}
+            <div style={{
+              position: 'absolute',
+              top: '0.4rem',
+              left: '0.4rem',
+              background: 'rgba(26, 60, 110, 0.85)',
+              color: 'white',
+              padding: '0.15rem 0.6rem',
+              borderRadius: '15px',
+              fontSize: '0.5rem',
+              fontWeight: '600',
+              letterSpacing: '0.3px',
+              textTransform: 'uppercase',
+              backdropFilter: 'blur(4px)',
+            }}>
+              {image.category}
+            </div>
+
+            {/* Title - Mobile Optimized */}
             <div style={{
               position: 'absolute',
               bottom: 0,
               left: 0,
               right: 0,
-              padding: '1.5rem',
+              padding: '0.8rem 0.6rem 0.5rem',
               background: 'linear-gradient(transparent, rgba(0,0,0,0.8))',
               color: 'white',
             }}>
               <h4 style={{ 
-                fontSize: '0.95rem', 
-                marginBottom: '0.2rem',
+                fontSize: '0.7rem',
+                marginBottom: '0',
                 fontFamily: "'Inter', sans-serif",
                 fontWeight: 600,
+                lineHeight: '1.2',
               }}>
                 {image.title}
               </h4>
-              <span style={{ 
-                fontSize: '0.75rem', 
-                opacity: 0.8,
-                fontFamily: "'Inter', sans-serif",
-              }}>
-                {image.category}
-              </span>
             </div>
+
+            {/* Expand Icon */}
             <div style={{
               position: 'absolute',
-              top: '0.8rem',
-              right: '0.8rem',
-              background: 'rgba(255,255,255,0.95)',
-              padding: '0.5rem',
+              top: '0.4rem',
+              right: '0.4rem',
+              background: 'rgba(255,255,255,0.9)',
+              padding: '0.2rem',
               borderRadius: '50%',
-              transition: 'all 0.3s ease',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
             }}>
-              <FaExpand size={12} color="#1a3c6e" />
+              <FaExpand size={8} color="#1a3c6e" />
             </div>
           </div>
         ))}
@@ -274,51 +274,52 @@ const Gallery = () => {
 
       {/* Load More Button */}
       {hasMoreImages && (
-        <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+        <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
           <button
             onClick={loadMore}
             style={{
-              padding: '0.8rem 2.5rem',
+              padding: '0.5rem 1.8rem',
               background: 'linear-gradient(135deg, #c9a84c, #a8872e)',
               color: 'white',
               border: 'none',
               borderRadius: '50px',
-              fontSize: '1rem',
+              fontSize: '0.8rem',
               fontWeight: '600',
               cursor: 'pointer',
               transition: 'all 0.3s ease',
-              boxShadow: '0 4px 20px rgba(201, 168, 76, 0.3)',
+              boxShadow: '0 3px 12px rgba(201, 168, 76, 0.3)',
               display: 'inline-flex',
               alignItems: 'center',
-              gap: '0.8rem',
+              gap: '0.5rem',
               fontFamily: "'Inter', sans-serif",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'translateY(-3px)';
-              e.currentTarget.style.boxShadow = '0 8px 30px rgba(201, 168, 76, 0.4)';
+              e.currentTarget.style.transform = 'translateY(-2px)';
+              e.currentTarget.style.boxShadow = '0 6px 20px rgba(201, 168, 76, 0.4)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 4px 20px rgba(201, 168, 76, 0.3)';
+              e.currentTarget.style.boxShadow = '0 3px 12px rgba(201, 168, 76, 0.3)';
             }}
           >
-            <FaPlus /> Load More ({filteredImages.length - visibleCount} remaining)
+            <FaPlus size={10} /> Load More ({filteredImages.length - visibleCount} remaining)
           </button>
         </div>
       )}
 
       {!hasMoreImages && filteredImages.length > 8 && (
-        <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+        <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
           <p style={{ 
             color: '#7a8294',
             fontFamily: "'Inter', sans-serif",
+            fontSize: '0.8rem',
           }}>
             ✨ All {filteredImages.length} images loaded
           </p>
         </div>
       )}
 
-      {/* Lightbox Modal */}
+      {/* Lightbox Modal - Same */}
       {selectedImage && (
         <div
           style={{
@@ -332,7 +333,7 @@ const Gallery = () => {
             alignItems: 'center',
             justifyContent: 'center',
             zIndex: 9999,
-            padding: '2rem',
+            padding: '1.5rem',
             animation: 'fadeIn 0.3s ease',
           }}
           onClick={closeLightbox}
@@ -341,15 +342,15 @@ const Gallery = () => {
             onClick={closeLightbox}
             style={{
               position: 'absolute',
-              top: '2rem',
-              right: '2rem',
+              top: '1.5rem',
+              right: '1.5rem',
               background: 'rgba(255,255,255,0.1)',
               border: '2px solid rgba(255,255,255,0.2)',
               color: 'white',
-              width: '50px',
-              height: '50px',
+              width: '40px',
+              height: '40px',
               borderRadius: '50%',
-              fontSize: '1.5rem',
+              fontSize: '1.2rem',
               cursor: 'pointer',
               transition: 'all 0.3s ease',
               display: 'flex',
@@ -364,9 +365,10 @@ const Gallery = () => {
             style={{
               maxWidth: '900px',
               maxHeight: '85vh',
-              borderRadius: '15px',
+              borderRadius: '12px',
               overflow: 'hidden',
               background: 'white',
+              width: '100%',
             }}
             onClick={(e) => e.stopPropagation()}
           >
@@ -385,13 +387,13 @@ const Gallery = () => {
               }}
             />
             <div style={{ 
-              padding: '1.5rem', 
+              padding: '0.8rem 1.2rem',
               background: 'white',
               fontFamily: "'Inter', sans-serif",
             }}>
               <h3 style={{ 
                 color: '#1a3c6e', 
-                fontSize: '1.3rem',
+                fontSize: '1rem',
                 fontFamily: "'Inter', sans-serif",
                 fontWeight: 700,
               }}>
@@ -399,6 +401,7 @@ const Gallery = () => {
               </h3>
               <p style={{ 
                 color: '#7a8294',
+                fontSize: '0.8rem',
                 fontFamily: "'Inter', sans-serif",
               }}>
                 {selectedImage.category}
@@ -408,47 +411,73 @@ const Gallery = () => {
         </div>
       )}
 
-      {/* CSS Animations */}
       <style>{`
         @keyframes fadeIn {
           from { opacity: 0; transform: scale(0.95); }
           to { opacity: 1; transform: scale(1); }
         }
-        @keyframes fadeInUp {
-          from { 
-            opacity: 0; 
-            transform: translateY(20px); 
+
+        /* ============================================
+           RESPONSIVE - Mobile Optimized
+           ============================================ */
+        
+        /* Desktop: 4 columns */
+        @media (min-width: 1024px) {
+          .gallery-grid {
+            grid-template-columns: repeat(4, 1fr) !important;
+            gap: 1.2rem !important;
           }
-          to { 
-            opacity: 1; 
-            transform: translateY(0); 
+          .gallery-filters button {
+            padding: 0.4rem 1.2rem !important;
+            font-size: 0.8rem !important;
           }
         }
 
-        /* Responsive */
-        @media (max-width: 1024px) {
+        /* Tablet: 3 columns */
+        @media (min-width: 768px) and (max-width: 1023px) {
           .gallery-grid {
             grid-template-columns: repeat(3, 1fr) !important;
+            gap: 1rem !important;
           }
         }
-        @media (max-width: 768px) {
+
+        /* Mobile: 2 columns (already set) */
+        @media (max-width: 767px) {
           .gallery-grid {
             grid-template-columns: repeat(2, 1fr) !important;
+            gap: 0.6rem !important;
+            padding: 0 0.3rem !important;
           }
-          .gallery-header h2 {
-            font-size: 2rem !important;
-          }
-        }
-        @media (max-width: 480px) {
-          .gallery-grid {
-            grid-template-columns: 1fr !important;
-          }
-          .gallery-header h2 {
-            font-size: 1.8rem !important;
+          .gallery-filters {
+            gap: 0.3rem !important;
           }
           .gallery-filters button {
-            padding: 0.4rem 1rem !important;
+            padding: 0.25rem 0.6rem !important;
+            font-size: 0.6rem !important;
+          }
+          .gallery-header h2 {
+            font-size: 1.5rem !important;
+          }
+          .gallery-header p {
             font-size: 0.8rem !important;
+          }
+        }
+
+        /* Small Mobile: 2 columns with smaller gap */
+        @media (max-width: 480px) {
+          .gallery-grid {
+            gap: 0.4rem !important;
+            padding: 0 0.2rem !important;
+          }
+          .gallery-item {
+            border-radius: 8px !important;
+          }
+          .gallery-item h4 {
+            font-size: 0.6rem !important;
+          }
+          .gallery-item .category-badge {
+            font-size: 0.4rem !important;
+            padding: 0.1rem 0.4rem !important;
           }
         }
       `}</style>

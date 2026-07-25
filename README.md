@@ -1,16 +1,59 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+## Pavna School Website Redesign - Dettroin Internship Assignment
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+### 📋 Project Information
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| Field | Details |
+|-------|---------|
+| **Full Name** | Aarti Swami |
+| **Intern ID** | [Your Intern ID] |
+| **Email Address** | aartiswami8896@gmail.com |
+| **GitHub Username** | Aarti5390 |
+| **Repository Name** | DETTROIN-INT-Aarti-Website |
+| **Selected Website** | [Pavna School Aligarh](https://pavnaschoolaligarh.com/) |
+| **Live Demo** | [🔗 View Live Demo](https://dettroint-int-aarti-website.vercel.app) |
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 🛠️ Technologies Used
+
+| Category | Technologies |
+|----------|--------------|
+| **Frontend Framework** | React.js 18 |
+| **Build Tool** | Vite |
+| **Styling** | CSS3 (Flexbox, Grid, Animations) |
+| **Icons** | React Icons |
+| **Animations** | CSS Animations, Intersection Observer |
+| **Fonts** | Google Fonts (Inter) |
+| **Deployment** | Vercel |
+| **Version Control** | Git & GitHub |
+
+---
+
+### ✨ Key Improvements Made
+
+#### 🎨 UI/UX Design
+- Modern navy blue and gold color palette
+- Clean typography with Inter font
+- Smooth scroll-triggered animations
+- Interactive hover effects and transitions
+
+#### 📱 Responsiveness
+- Mobile-first approach
+- 4-column desktop to single-column mobile
+- Touch-friendly hamburger menu
+- Responsive images
+
+#### 🚀 Performance
+- Lazy loading images
+- Optimized asset loading
+- Fast Vite build system
+
+#### 💻 Code Quality
+- Component-based React architecture
+- Clean, well-commented code
+- 15+ meaningful Git commits
+
+
